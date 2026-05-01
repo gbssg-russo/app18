@@ -1,9 +1,9 @@
  # Projektarbeit Modul 183
 Noé, Samuel, Noël
 
-Name der WebApp: NSN18
+Name der WebApp: NSN8
 Kurzbeschreibung:
-Unsere Projektidee im Modul 183 ist eine WebApp für einen Kleidershop namens NSN18. Kunden sollen Kleidung ansehen und auswählen, und eventuell Rezensionen hinzufügen und sich Produkte merken können.Zusätzlich sollen Benutzerkonten und evtl. Rollen umgesetzt werden, damit wir die Sicherheit der WebApp praktisch zeigen können.
+Unsere Projektidee im Modul 183 ist eine WebApp für einen Kleidershop namens NSN8. Kunden sollen Kleidung ansehen und auswählen, und eventuell Rezensionen hinzufügen und sich Produkte merken können.Zusätzlich sollen Benutzerkonten und evtl. Rollen umgesetzt werden, damit wir die Sicherheit der WebApp praktisch zeigen können.
 
 Features mit Prio:
 1. Login, Rollen, Produkte hinzufügen/ bearbeiten, Accounts
