@@ -1,8 +1,16 @@
-FROM node:22-alpine
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /build
+
+COPY pom.xml .
+COPY src ./src
+COPY app ./src/main/resources/static
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY app/package*.json ./
-RUN npm install --omit=dev
-COPY app/ ./
-ENV PORT=3000
+
+COPY --from=build /build/target/*.jar app.jar
+
 EXPOSE 3000
-CMD ["npm", "start"]
+
+CMD ["java", "-jar", "app.jar"]
