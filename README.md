@@ -24,7 +24,6 @@ Techstack:
 Frontend	HTML, CSS, JavaScript 
 Backend	Java / Spring
 Datenbank	MYSQL
-Sicherheit	HTTPS, Passwort-Hashing, Rollenberechtigungen, Input Validation
 
 Begründung des Techstacks:
 HTML, CSS und JavaScript wurden für das Frontend gewählt, weil damit eine einfache und übersichtliche Benutzeroberfläche für den Kleidershop erstellt werden kann. Java / Spring wurde für das Backend gewählt, weil sich damit Login, Rollen, Validierung und Datenbankzugriffe strukturiert umsetzen lassen.
