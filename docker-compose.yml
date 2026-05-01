@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: ${APP_ID}
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      APP_NAME: ${APP_ID}
+    ports:
+      - "${APP_PORT}:3000"
+    mem_limit: 256m
