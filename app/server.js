@@ -1,45 +1,34 @@
-const express = require("express");
+const path = require('path');
+const express = require('express');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+
+const { port } = require('./config');
+const { apiRateLimiter } = require('./middleware/rateLimiter');
+const { globalErrorHandler } = require('./middleware/errorHandler');
+const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/products');
+const reviewRoutes = require('./routes/reviews');
+
 const app = express();
 
-const port = process.env.PORT || 3000;
-const appName = process.env.APP_NAME || "student-app-template";
+app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(apiRateLimiter);
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>${appName}</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
-          }
-          .box {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 24px;
-          }
-          code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="box">
-          <h1>${appName}</h1>
-          <p>Your app is running successfully.</p>
-          <p>Hostname: <code>${req.hostname}</code></p>
-          <p>Container port: <code>${port}</code></p>
-        </div>
-      </body>
-    </html>
-  `);
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/reviews', reviewRoutes);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'home.html'));
 });
 
+app.use(globalErrorHandler);
+
 app.listen(port, () => {
-  console.log(`${appName} listening on port ${port}`);
+  console.log(`NSN8 Shop listening on port ${port}`);
 });
